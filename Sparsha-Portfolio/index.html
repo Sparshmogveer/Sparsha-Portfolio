@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sparsha B T — Architecting Intelligence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="Sparsh-portfolio.css">
+</head>
+<body>
+<!-- ── HEADER ── -->
+<header id="header"> 
+  <div class="nav-inner">
+    <a href="javascript:void(0)" class="nav-logo" onclick="showPage('landing')">
+      <span>♔</span>
+      <span>SPARSHA B T</span>
+    </a>
+    <nav class="nav-links">
+      <a href="javascript:void(0)" onclick="showPage('landing')" data-page="landing">Home</a>
+      <a href="javascript:void(0)" onclick="showPage('about')" data-page="about">About</a>
+      <a href="javascript:void(0)" onclick="showPage('skills')" data-page="skills">Skills</a>
+      <a href="javascript:void(0)" onclick="showPage('projects')" data-page="projects">Projects</a>
+      <a href="javascript:void(0)" onclick="showPage('experience')" data-page="experience">Experience</a>
+      <a href="javascript:void(0)" class="nav-cta" onclick="showPage('contact')">Let's Connect</a>
+    </nav>
+    <button class="hamburger" onclick="toggleMobile()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="javascript:void(0)" onclick="showPage('landing');closeMobile()">Home</a>
+    <a href="javascript:void(0)" onclick="showPage('about');closeMobile()">About</a>
+    <a href="javascript:void(0)" onclick="showPage('skills');closeMobile()">Skills</a>
+    <a href="javascript:void(0)" onclick="showPage('projects');closeMobile()">Projects</a>
+    <a href="javascript:void(0)" onclick="showPage('experience');closeMobile()">Experience</a>
+    <a href="javascript:void(0)" onclick="showPage('contact');closeMobile()">Contact</a>
+  </div>
+</header>
+
+<!-- ════════════════════════════════ LANDING ════════════════════════════════ -->
+<div id="page-landing" class="page active">
+  <div class="hero-bg">
+    <img src="https://images.unsplash.com/photo-1763788427927-87bc7c1fbcf7?w=1600&q=80" alt="AI Chess">
+  </div>
+  <!-- Floating profile photo — bottom right, subtle -->
+  <div class="hero-content">
+    <div class="hero-inner">
+      <!-- Live ticker -->
+      <div class="hero-ticker">
+        <span class="ticker-dot"></span>
+        <span>⚡ Currently: AI/ML &amp; QA Intern @ NammaQA – Wizzybox</span>
+      </div>
+
+      <span class="hero-piece">♟️</span>
+      <h1 class="hero-name">SPARSHA B T</h1>
+      <h2 class="hero-tagline">Architecting Intelligence. Executing Strategy.</h2>
+      <blockquote class="hero-quote">
+        "In chess, the player who thinks ahead wins.<br>
+        In technology, the engineer who designs ahead leads."
+      </blockquote>
+      <p class="hero-sub">
+        AI &amp; ML Engineer | Full Stack System Builder | Data Strategist<br>
+        <span>Bengaluru, India · Open to Relocation &amp; Remote</span><br>
+        <span style="color:#666;font-size:0.85rem">♟ Casual Chess Player — the board is where strategy begins</span>
+      </p>
+      <div class="hero-btns">
+        <button class="btn-primary" onclick="showPage('projects')">
+          View Strategic Projects <span>→</span>
+        </button>
+        <button class="btn-outline" onclick="showPage('contact')">
+          Let's Connect
+        </button>
+        <a class="btn-resume" href="Sparsha_B_T_Resume.pdf" download="Sparsha_B_T_Resume.pdf">
+          📄 Download Resume
+        </a>
+      </div>
+      <div class="hero-cards">
+        <div class="hero-card" onclick="showPage('about')">
+          <span class="hero-card-icon">♔</span>
+          <h3>Vision</h3>
+          <p>Strategic Direction</p>
+        </div>
+        <div class="hero-card" onclick="showPage('skills')">
+          <span class="hero-card-icon">♕</span>
+          <h3>Skills</h3>
+          <p>Core Strengths</p>
+        </div>
+        <div class="hero-card" onclick="showPage('projects')">
+          <span class="hero-card-icon">♖</span>
+          <h3>Projects</h3>
+          <p>Built Solutions</p>
+        </div>
+        <div class="hero-card" onclick="showPage('experience')">
+          <span class="hero-card-icon">♗</span>
+          <h3>Experience</h3>
+          <p>Professional Path</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint">⌄</div>
+</div>
+
+<!-- ════════════════════════════════ ABOUT ════════════════════════════════ -->
+<div id="page-about" class="page">
+  <div class="section-header">
+    <span class="piece-icon">♔</span>
+    <h1 class="section-title">THE KING</h1>
+    <p class="section-subtitle">// Vision &amp; Endgame</p>
+  </div>
+  <div class="container">
+
+    <!-- Profile row -->
+    <div class="about-hero fade-in">
+      <div class="about-photo-wrap">
+        <img src="images/sparsha-profile.jpg" alt="Sparsha B T" class="about-photo">
+        <div class="about-photo-badge">🏆 Best Outgoing Student</div>
+      </div>
+      <div class="about-text">
+        <p style="color:var(--bronze);font-family:'IBM Plex Mono',monospace;font-size:0.8rem;margin-bottom:12px;letter-spacing:0.08em">AI &amp; ML ENGINEER · BENGALURU, INDIA</p>
+        <p>Final-year B.Tech in Artificial Intelligence &amp; Machine Learning at <strong style="color:#fff">Srinivas University Institute of Engineering &amp; Technology</strong> — CGPA 8.35/10.</p>
+        <p>4 internships across ML validation, full-stack development, and data science. I build systems that reach production, not just notebooks that look good.</p>
+        <p>Awarded <strong style="color:var(--gold)">Best Outgoing Student — AI&amp;ML Department (2022–2026)</strong> and led college programs as student representative.</p>
+        <div class="endgame-box" style="margin-top:20px">
+          <strong>The Long-Term Endgame:</strong>
+          <p>To operate at the intersection of AI research, product engineering, and real-world impact.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Education timeline -->
+    <div class="card fade-in" style="margin-bottom:28px;padding:32px">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:24px">
+        <span style="font-size:1.5rem">🎓</span>
+        <h3 style="color:#fff;font-size:1.1rem;font-weight:700">Education</h3>
+      </div>
+      <div class="edu-timeline">
+        <div class="edu-item">
+          <div class="edu-dot"></div>
+          <div class="edu-body">
+            <div class="edu-year">2022 – 2026</div>
+            <div class="edu-degree">B.Tech — Artificial Intelligence &amp; Machine Learning</div>
+            <div class="edu-school">Srinivas University Institute of Engineering &amp; Technology, Mukka</div>
+            <div class="edu-grade">CGPA 8.35 / 10 &nbsp;·&nbsp; 🏆 Best Outgoing Student</div>
+          </div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-dot"></div>
+          <div class="edu-body">
+            <div class="edu-year">2020 – 2022</div>
+            <div class="edu-degree">Pre-University — PCMB (Science)</div>
+            <div class="edu-school">Siddaganga PU Science College</div>
+            <div class="edu-grade">Score: 70%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Award + Speaking — impressive full-width layout -->
+    <div class="about-moments fade-in">
+      <div class="about-moment-card">
+        <img src="images/sparsha-award.jpg" alt="Best Outgoing Student Award" style="object-position: center 20%;">
+        <div class="about-moment-overlay">
+          <div class="about-moment-icon">🏆</div>
+          <div class="about-moment-label">Best Outgoing Student</div>
+          <div class="about-moment-sub">AI &amp; ML Dept · Annual Day 2026</div>
+        </div>
+      </div>
+      <div class="about-moment-card">
+        <img src="images/sparsha-speaking.jpg" alt="Speaking at college event" style="object-position: center 30%;">
+        <div class="about-moment-overlay">
+          <div class="about-moment-icon">🎙️</div>
+          <div class="about-moment-label">Event Conductor</div>
+          <div class="about-moment-sub">Hosted &amp; conducted college events · AI&amp;ML Dept · Srinivas University</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Vision cards -->
+    <div class="vision-grid">
+      <div class="card vision-card card-hover-scale fade-in">
+        <div class="vision-card-icon">🎯</div>
+        <h3>Intelligent Systems</h3>
+        <p>Scalable AI pipelines that solve real problems — not demos</p>
+      </div>
+      <div class="card vision-card card-hover-scale fade-in">
+        <div class="vision-card-icon">📈</div>
+        <h3>Predictive Analytics</h3>
+        <p>Risk models that reduce uncertainty and sharpen decisions</p>
+      </div>
+      <div class="card vision-card card-hover-scale fade-in">
+        <div class="vision-card-icon">🤖</div>
+        <h3>Local LLM &amp; GenAI</h3>
+        <p>Production inference with Ollama, Llama 3.2, Gemma 3</p>
+      </div>
+      <div class="card vision-card card-hover-scale fade-in">
+        <div class="vision-card-icon">🏆</div>
+        <h3>Proven Track Record</h3>
+        <p>Best Outgoing Student · 4 Internships · CGPA 8.35</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════════════════════════════════ SKILLS ════════════════════════════════ -->
+<div id="page-skills" class="page">
+  <div class="section-header">
+    <span class="piece-icon">♕</span>
+    <h1 class="section-title">THE QUEEN</h1>
+    <p class="section-subtitle">// Core Dominance</p>
+  </div>
+  <div class="container">
+    <p style="color:#aaa;text-align:center;max-width:700px;margin:0 auto 40px;line-height:1.7;">
+      The Queen is the most powerful piece on the board. These are the capabilities that define my strength.
+    </p>
+
+    <div class="card skill-row fade-in" style="margin-bottom:16px">
+      <div class="skill-row-icon">🧠</div>
+      <div>
+        <h3>AI &amp; Machine Learning</h3>
+        <p>4 internships building real pipelines — fraud detection, road accident risk prediction, image classification. Focused on reliability, not just accuracy.</p>
+        <div class="badge-row">
+          <span class="badge">Python</span>
+          <span class="badge">TensorFlow</span>
+          <span class="badge">Scikit-learn</span>
+          <span class="badge">OpenCV</span>
+          <span class="badge">CNN</span>
+          <span class="badge">Random Forest</span>
+          <span class="badge">Pandas</span>
+          <span class="badge">NumPy</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card skill-row fade-in" style="margin-bottom:16px">
+      <div class="skill-row-icon">🤖</div>
+      <div>
+        <h3>Local LLMs &amp; Prompt Engineering</h3>
+        <p>Running local inference with Ollama — prompt quality evaluation, context management, and API integration for production-grade LLM workflows.</p>
+        <div class="badge-row">
+          <span class="badge">Ollama</span>
+          <span class="badge">Llama 3.2</span>
+          <span class="badge">Gemma 3</span>
+          <span class="badge">Qwen 2.5</span>
+          <span class="badge">Prompt Engineering</span>
+          <span class="badge">LLM APIs</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card skill-row fade-in" style="margin-bottom:16px">
+      <div class="skill-row-icon">💻</div>
+      <div>
+        <h3>Full Stack Development</h3>
+        <p>From responsive e-commerce platforms to REST APIs — building systems that balance functionality, performance, and user experience.</p>
+        <div class="badge-row">
+          <span class="badge">React.js</span>
+          <span class="badge">Node.js</span>
+          <span class="badge">MongoDB</span>
+          <span class="badge">MySQL</span>
+          <span class="badge">REST APIs</span>
+          <span class="badge">Tailwind CSS</span>
+          <span class="badge">Firebase</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card skill-row fade-in" style="margin-bottom:32px">
+      <div class="skill-row-icon">🗄️</div>
+      <div>
+        <h3>Data Intelligence &amp; Tools</h3>
+        <p>Structured data flow, clean pipelines, and visual analytics — from raw CSV to actionable insight.</p>
+        <div class="badge-row">
+          <span class="badge">SQL</span>
+          <span class="badge">Power BI</span>
+          <span class="badge">Matplotlib</span>
+          <span class="badge">Seaborn</span>
+          <span class="badge">EDA</span>
+          <span class="badge">Git/GitHub</span>
+          <span class="badge">AWS Cloud</span>
+          <span class="badge">VS Code</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card fade-in" style="margin-bottom:32px">
+      <div class="arsenal-grid">
+        <div class="arsenal-item"><span style="color:var(--bronze)">⚙️</span><span>Deep Learning</span></div>
+        <div class="arsenal-item"><span style="color:var(--bronze)">☁️</span><span>AWS Cloud</span></div>
+        <div class="arsenal-item"><span style="color:var(--bronze)">🔌</span><span>API Design</span></div>
+        <div class="arsenal-item"><span style="color:var(--bronze)">📊</span><span>Data Modeling</span></div>
+        <div class="arsenal-item"><span style="color:var(--bronze)">🤖</span><span>LLM Inference</span></div>
+        <div class="arsenal-item"><span style="color:var(--bronze)">🔬</span><span>Model Evaluation</span></div>
+      </div>
+    </div>
+
+    <!-- ── CERTIFICATIONS IN SKILLS ── -->
+    <div class="card fade-in" style="margin-bottom:32px">
+      <div style="padding:28px">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px">
+          <span style="font-size:1.8rem">🏅</span>
+          <h3 style="color:#fff;font-size:1.2rem;font-weight:700">Certifications</h3>
+        </div>
+        <p style="color:#aaa;margin-bottom:20px;font-size:0.88rem">Click any certificate to view or verify</p>
+        <div class="cert-grid">
+          <a class="cert-item cert-link" href="images/cert-aws.png" target="_blank">
+            <span class="cert-icon">☁️</span>
+            <span>AWS Academy Cloud Foundations</span>
+            <span class="cert-view">View Certificate ↗</span>
+          </a>
+          <a class="cert-item cert-link" href="images/cert-it-specialist.png" target="_blank">
+            <span class="cert-icon">🗄️</span>
+            <span>IT Specialist — Databases (Certiport)</span>
+            <span class="cert-view">View Certificate ↗</span>
+          </a>
+          <a class="cert-item cert-link" href="https://courses.cognitiveclass.ai/certificates/e8bfe84c83624aec982aa015869e32b0" target="_blank">
+            <span class="cert-icon">🏥</span>
+            <span>ML in HealthCare — IBM Cognitive Class</span>
+            <span class="cert-view">View Certificate ↗</span>
+          </a>
+          <a class="cert-item cert-link" href="https://courses.cognitiveclass.ai/certificates/da3eda3b00c24302ae09ca6a33f55048" target="_blank">
+            <span class="cert-icon">🐍</span>
+            <span>Python 101 for Data Science — IBM</span>
+            <span class="cert-view">View Certificate ↗</span>
+          </a>
+          <a class="cert-item cert-link" href="images/cert-prodigy.pdf" target="_blank">
+            <span class="cert-icon">🎖️</span>
+            <span>ML Internship — Prodigy InfoTech</span>
+            <span class="cert-view">View Certificate ↗</span>
+          </a>
+          <a class="cert-item cert-link" href="images/cert-zephyr.jpg" target="_blank">
+            <span class="cert-icon">🏢</span>
+            <span>MERN Stack Internship — Zephyr Technologies</span>
+            <span class="cert-view">View Certificate ↗</span>
+          </a>
+          <a class="cert-item cert-link" href="https://www.credly.com/go/atXXTFQd" target="_blank">
+            <span class="cert-icon">🏆</span>
+            <span>Python Programming — Skill India (NSDC)</span>
+            <span class="cert-view">View Certificate ↗</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="approach-box fade-in">
+      <h3><span style="font-size:1.4rem">♘</span> Problem-Solving Approach</h3>
+      <div class="approach-step"><span class="num">1.</span><span>Decompose into manageable components</span></div>
+      <div class="approach-step"><span class="num">2.</span><span>Evaluate available data and constraints</span></div>
+      <div class="approach-step"><span class="num">3.</span><span>Compare strategic options and trade-offs</span></div>
+      <div class="approach-step"><span class="num">4.</span><span>Execute the most optimal solution with measurable outcomes</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════ PROJECTS ════════════════════════════════ -->
+<div id="page-projects" class="page">
+  <div class="section-header">
+    <span class="piece-icon">♖</span>
+    <h1 class="section-title">THE ROOKS</h1>
+    <p class="section-subtitle">// Structured Execution</p>
+  </div>
+  <div class="container">
+    <p style="color:#aaa;text-align:center;max-width:700px;margin:0 auto 40px;line-height:1.7;">
+      Rooks represent structure and strength. These projects demonstrate applied strategy.
+    </p>
+
+    <div class="card project-card fade-in">
+      <div class="project-inner">
+        <div class="project-img">
+          <a href="https://github.com/Sparshmogveer/Credit-Card-Fraud-Detection-System" target="_blank" rel="noopener">
+            <img src="images/project-fraud.png" alt="Credit Card Fraud Detection">
+            <div class="project-img-overlay">
+              <span>⭐ View on GitHub →</span>
+            </div>
+          </a>
+        </div>
+        <div class="project-body">
+          <div class="project-icon">🛡️</div>
+          <h3 class="project-title">Credit Card Fraud Detection System</h3>
+          <p class="project-sub">Predictive Risk Intelligence Engine · CodSoft Internship</p>
+          <p class="project-desc">Built a machine learning system to identify anomalous financial transactions with optimized decision thresholds.</p>
+          <p class="approach-title">Strategic Approach:</p>
+          <ul class="approach-list">
+            <li>Deep EDA to uncover risk indicators</li>
+            <li>Feature engineering for signal clarity</li>
+            <li>Classification model tuning</li>
+            <li>Threshold optimization</li>
+          </ul>
+          <div class="result-box">
+            <strong>Result:</strong>
+            <p>A reliable detection system that balances precision and recall.</p>
+          </div>
+          <div class="badge-row">
+            <span class="badge">Python</span>
+            <span class="badge">Scikit-learn</span>
+            <span class="badge">Pandas</span>
+            <span class="badge">ML Models</span>
+          </div>
+          <a class="github-btn" href="https://github.com/Sparshmogveer/Credit-Card-Fraud-Detection-System" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:-2px;margin-right:6px"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            View on GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card project-card fade-in">
+      <div class="project-inner">
+        <div class="project-img">
+          <a href="https://github.com/Sparshmogveer/Gender-and-Age-Detection-master" target="_blank" rel="noopener">
+            <img src="images/project-gender.png" alt="Gender & Age Detection">
+            <div class="project-img-overlay">
+              <span>⭐ View on GitHub →</span>
+            </div>
+          </a>
+        </div>
+        <div class="project-body">
+          <div class="project-icon">👁️</div>
+          <h3 class="project-title">Gender &amp; Age Detection System</h3>
+          <p class="project-sub">Real-Time Computer Vision Application</p>
+          <p class="project-desc">Developed a live detection system using CNN and OpenCV for real-time inference with optimized performance.</p>
+          <p class="approach-title">Strategic Approach:</p>
+          <ul class="approach-list">
+            <li>Transfer learning implementation</li>
+            <li>Video stream preprocessing</li>
+            <li>Inference time optimization</li>
+            <li>Real-time deployment logic</li>
+          </ul>
+          <div class="result-box">
+            <strong>Result:</strong>
+            <p>Strengthened understanding of performance-aware deep learning systems.</p>
+          </div>
+          <div class="badge-row">
+            <span class="badge">Python</span>
+            <span class="badge">OpenCV</span>
+            <span class="badge">TensorFlow</span>
+            <span class="badge">CNN</span>
+          </div>
+          <a class="github-btn" href="https://github.com/Sparshmogveer/Gender-and-Age-Detection-master" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:-2px;margin-right:6px"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            View on GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card project-card fade-in">
+      <div class="project-inner">
+        <div class="project-img">
+          <a href="https://github.com/Sparshmogveer/Mern-stack" target="_blank" rel="noopener">
+            <img src="images/project-mern.png" alt="MERN E-Commerce Platform">
+            <div class="project-img-overlay">
+              <span>⭐ View on GitHub →</span>
+            </div>
+          </a>
+        </div>
+        <div class="project-body">
+          <div class="project-icon">🛒</div>
+          <h3 class="project-title">MERN E-Commerce Platform</h3>
+          <p class="project-sub">Scalable Full Stack Architecture</p>
+          <p class="project-desc">Designed a complete e-commerce application with authentication, product management, and secure API integration.</p>
+          <p class="approach-title">Strategic Approach:</p>
+          <ul class="approach-list">
+            <li>Authentication flow design</li>
+            <li>Product lifecycle management</li>
+            <li>Secure REST API integration</li>
+            <li>Responsive frontend architecture</li>
+          </ul>
+          <div class="result-box">
+            <strong>Result:</strong>
+            <p>Emphasized architectural thinking and end-to-end data flow.</p>
+          </div>
+          <div class="badge-row">
+            <span class="badge">MongoDB</span>
+            <span class="badge">Express</span>
+            <span class="badge">React</span>
+            <span class="badge">Node.js</span>
+          </div>
+          <a class="github-btn" href="https://github.com/Sparshmogveer/Mern-stack" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:-2px;margin-right:6px"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            View on GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card project-card fade-in">
+      <div class="project-inner">
+        <div class="project-img">
+          <img src="images/project-road-accident.jpg" alt="Road Accident Risk Prediction App">
+          <div class="project-img-overlay">
+            <span>🏍️ View Project</span>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-icon">⚠️</div>
+          <h3 class="project-title">Road Accident Risk Prediction</h3>
+          <p class="project-sub">AI Safety System for Two-Wheelers · Nov 2025 – Mar 2026</p>
+          <p class="project-desc">ML pipeline analysing accelerometer and gyroscope sensor data to classify riding risk as Safe, Medium, or High in real time.</p>
+          <p class="approach-title">Strategic Approach:</p>
+          <ul class="approach-list">
+            <li>Random Forest with engineered time-domain features</li>
+            <li>Threshold tuning for 91% recall on high-risk events</li>
+            <li>22% reduction in false-positive alerts via feature selection</li>
+            <li>Class-weight balancing on imbalanced sensor data</li>
+          </ul>
+          <div class="result-box">
+            <strong>Result:</strong>
+            <p>91% recall on critical high-risk events — minimising missed safety alerts in real-world conditions.</p>
+          </div>
+          <div class="badge-row">
+            <span class="badge">Python</span>
+            <span class="badge">Random Forest</span>
+            <span class="badge">Scikit-learn</span>
+            <span class="badge">Sensor Data</span>
+            <span class="badge">Feature Engineering</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════ EXPERIENCE ════════════════════════════════ -->
+<div id="page-experience" class="page">
+  <div class="section-header">
+    <span class="piece-icon">♗</span>
+    <h1 class="section-title">THE BISHOPS</h1>
+    <p class="section-subtitle">// Industry Diagonals</p>
+  </div>
+  <div class="container">
+    <p style="color:#aaa;text-align:center;max-width:700px;margin:0 auto 40px;line-height:1.7;">
+      Bishops move across the board diagonally — just as my experience spans AI, data science, and full-stack development.
+    </p>
+
+    <div class="exp-grid">
+
+      <div class="card exp-card card-hover-scale fade-in">
+        <div class="exp-card-head">
+          <span class="exp-piece">♗</span>
+          <span class="exp-badge exp-badge-current">Current</span>
+        </div>
+        <div class="exp-company">NammaQA – Wizzybox</div>
+        <div class="exp-role">AI/ML &amp; QA Intern · Jan 2026 – Present</div>
+        <ul class="exp-achievements">
+          <li>Validate AI/ML model outputs and API responses using Python, Pandas, and Scikit-learn — catching edge-case failures before production</li>
+          <li>Run inference tests and prompt quality evaluations on Llama 3.2 and Gemma 3 via Ollama, contributing to iterative model improvement</li>
+          <li>Design and execute API test suites covering request/response integrity, boundary conditions, and model output reliability</li>
+        </ul>
+        <div class="badge-row">
+          <span class="badge">Python</span>
+          <span class="badge">Ollama</span>
+          <span class="badge">Llama 3.2</span>
+          <span class="badge">Gemma 3</span>
+          <span class="badge">API Testing</span>
+          <span class="badge">QA</span>
+        </div>
+      </div>
+
+      <div class="card exp-card card-hover-scale fade-in">
+        <div class="exp-card-head">
+          <span class="exp-piece">♗</span>
+          <span class="exp-badge">Internship</span>
+        </div>
+        <div class="exp-company">Zephyr Technologies &amp; Solutions Pvt. Ltd.</div>
+        <div class="exp-role">Full Stack Development Intern · May – Jun 2025</div>
+        <ul class="exp-achievements">
+          <li>Built modular React.js UI components and integrated REST APIs, improving user engagement by 30% through frontend optimisation</li>
+          <li>Collaborated in an agile team using Git/GitHub, delivering the full-stack project on schedule and within scope</li>
+        </ul>
+        <div class="badge-row">
+          <span class="badge">React.js</span>
+          <span class="badge">Node.js</span>
+          <span class="badge">REST APIs</span>
+          <span class="badge">Git</span>
+          <span class="badge">Agile</span>
+        </div>
+        <a class="github-btn" href="images/cert-zephyr.jpg" target="_blank" style="margin-top:14px;background:#0d1f2d;border-color:#00bcd4;color:#80deea;">
+          🏢 View Zephyr Internship Certificate ↗
+        </a>
+      </div>
+    </div>
+
+      <div class="card exp-card card-hover-scale fade-in">
+        <div class="exp-card-head">
+          <span class="exp-piece">♗</span>
+          <span class="exp-badge">Internship</span>
+        </div>
+        <div class="exp-company">CodSoft</div>
+        <div class="exp-role">Data Science Intern · Aug – Sep 2024</div>
+        <ul class="exp-achievements">
+          <li>Performed end-to-end EDA, data cleaning, and preprocessing using Python, Pandas, NumPy, and Matplotlib on real-world datasets</li>
+          <li>Built and tuned classification and regression models, extracting actionable business insights from raw data</li>
+        </ul>
+        <div class="badge-row">
+          <span class="badge">Python</span>
+          <span class="badge">Pandas</span>
+          <span class="badge">NumPy</span>
+          <span class="badge">Matplotlib</span>
+          <span class="badge">EDA</span>
+        </div>
+      </div>
+
+      <div class="card exp-card card-hover-scale fade-in">
+        <div class="exp-card-head">
+          <span class="exp-piece">♗</span>
+          <span class="exp-badge">Internship</span>
+        </div>
+        <div class="exp-company">Prodigy InfoTech</div>
+        <div class="exp-role">Machine Learning Intern · Dec 2023</div>
+        <ul class="exp-achievements">
+          <li>Completed a 1-month ML internship with outstanding remarks</li>
+          <li>Built data preprocessing pipelines and trained classification models</li>
+          <li>Worked on real-world ML tasks including fraud detection and image classification</li>
+        </ul>
+        <div class="badge-row">
+          <span class="badge">Python</span>
+          <span class="badge">Scikit-learn</span>
+          <span class="badge">ML Models</span>
+          <span class="badge">Data Processing</span>
+        </div>
+        <a class="github-btn" href="images/cert-prodigy.pdf" target="_blank" style="margin-top:14px;background:#1a2a1a;border-color:#4caf50;color:#81c784;">
+          🎖️ View Prodigy Internship Certificate ↗
+        </a>
+      </div>
+
+    </div>
+
+    <div class="card fade-in" style="margin-bottom:24px">
+      <div style="padding:28px">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px">
+          <span style="font-size:2rem;color:var(--gold)">♙</span>
+          <h3 style="color:#fff;font-size:1.3rem;font-weight:700">Continuous Learning</h3>
+        </div>
+        <p style="color:var(--bronze);margin-bottom:16px;font-size:0.85rem">Discipline &amp; Growth</p>
+        <p style="color:#aaa;margin-bottom:16px;line-height:1.7">No grandmaster wins without pawns. Small improvements. Consistent refinement. Compounded expertise.</p>
+        <p style="color:#888;font-size:0.85rem">📜 All certifications are viewable in the <strong style="color:var(--gold)">Skills</strong> section.</p>
+      </div>
+    </div>
+
+    <div class="insights-box fade-in">
+      <h3>📖 Each Experience Strengthened Different Dimensions</h3>
+      <div class="insight"><span class="arrow">→</span><span><strong style="color:#ddd">NammaQA – Wizzybox:</strong> LLM inference testing, prompt evaluation, production-grade QA</span></div>
+      <div class="insight"><span class="arrow">→</span><span><strong style="color:#ddd">Zephyr Technologies:</strong> Full-stack delivery, React UI, REST API integration, agile teamwork</span></div>
+      <div class="insight"><span class="arrow">→</span><span><strong style="color:#ddd">CodSoft:</strong> End-to-end data science pipelines, EDA, classification &amp; regression models</span></div>
+      <div class="insight"><span class="arrow">→</span><span><strong style="color:#ddd">Prodigy InfoTech:</strong> ML model development, preprocessing pipelines, outstanding remarks</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════ CONTACT ════════════════════════════════ -->
+<div id="page-contact" class="page">
+  <div class="section-header">
+    <span class="piece-icon">♚</span>
+    <h1 class="section-title">THE ENDGAME</h1>
+    <p class="section-subtitle">// What I'm Building Toward</p>
+  </div>
+  <div class="container">
+    <p style="color:#aaa;text-align:center;max-width:700px;margin:0 auto 16px;line-height:1.7;">
+      I am seeking opportunities where I can contribute to intelligent systems that make a real impact.
+      If your team values strategic thinkers who combine machine intelligence with execution discipline —
+    </p>
+    <h2 style="color:var(--gold);text-align:center;font-family:'Playfair Display',serif;font-size:1.8rem;margin-bottom:40px">
+      Let's build the next move.
+    </h2>
+
+    <div class="contact-grid">
+      <div class="card contact-card fade-in">
+        <h3>Areas of Contribution</h3>
+        <div class="opp-item"><span class="check">✓</span> AI-driven product development</div>
+        <div class="opp-item"><span class="check">✓</span> Data engineering systems</div>
+        <div class="opp-item"><span class="check">✓</span> Risk analytics &amp; predictive platforms</div>
+        <div class="opp-item"><span class="check">✓</span> Scalable full-stack architecture</div>
+      </div>
+
+      <div class="card contact-card fade-in">
+        <h3>Contact Information</h3>
+        <div class="contact-info-item">
+          <div class="contact-icon-wrap">✉️</div>
+          <div>
+            <p>Email</p>
+            <a href="mailto:sparshnalkudremattd@gmail.com">sparshnalkudremattd@gmail.com</a>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-icon-wrap">📍</div>
+          <div>
+            <p>Location</p>
+            <span>Mangalore, India</span>
+          </div>
+        </div>
+        <h4 style="color:#fff;font-size:0.9rem;margin-top:20px;margin-bottom:12px">Connect on Social</h4>
+        <div class="social-row">
+          <a href="mailto:sparshnalkudremattd@gmail.com" class="social-btn" title="Email">✉️</a>
+          <a href="https://github.com/Sparshmogveer" target="_blank" rel="noopener" class="social-btn" title="GitHub">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+            </svg>
+          </a>
+          <a href="https://www.linkedin.com/in/sparsha-b-t" target="_blank" rel="noopener" class="social-btn" title="LinkedIn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card form-card fade-in">
+      <h3>Send a Message</h3>
+      <p class="form-sub">Let's discuss how we can collaborate</p>
+      <div id="form-success" class="success-msg">
+        ✓ Message sent! Thank you for reaching out — I'll reply within 24 hours. 🎉
+      </div>
+      <div id="form-error" style="display:none;background:#3d1a1a;color:#ff8a80;border:1px solid #ff4444;border-radius:8px;padding:14px 18px;margin-bottom:18px;font-size:0.95rem;">
+        ⚠️ Something went wrong. Opening your email client as a backup…
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Your Name *</label>
+          <input type="text" id="f-name" placeholder="John Doe">
+        </div>
+        <div class="form-group">
+          <label>Your Email *</label>
+          <input type="email" id="f-email" placeholder="john@example.com">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Subject *</label>
+        <input type="text" id="f-subject" placeholder="Project Collaboration Opportunity">
+      </div>
+      <div class="form-group">
+        <label>Your Message *</label>
+        <textarea id="f-message" rows="7" placeholder="Tell me about your project or opportunity..."></textarea>
+      </div>
+      <div class="form-submit">
+        <button class="btn-primary" onclick="submitForm()" id="submit-btn">
+          ✉️ Send Message
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer id="footer" style="display:none">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="javascript:void(0)" class="logo" onclick="showPage('landing')">
+        <span style="color:var(--gold)">♔</span>
+        <span>SPARSHA B T</span>
+      </a>
+      <p>AI &amp; ML Engineer architecting intelligent solutions for tomorrow's challenges.</p>
+    </div>
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="javascript:void(0)" onclick="showPage('about')">About</a></li>
+        <li><a href="javascript:void(0)" onclick="showPage('skills')">Skills</a></li>
+        <li><a href="javascript:void(0)" onclick="showPage('projects')">Projects</a></li>
+        <li><a href="javascript:void(0)" onclick="showPage('experience')">Experience</a></li>
+        <li><a href="javascript:void(0)" onclick="showPage('contact')">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-connect">
+      <h4>Connect</h4>
+      <div class="footer-social">
+        <a href="mailto:sparshnalkudremattd@gmail.com" class="social-btn" title="Email">✉️</a>
+        <a href="https://github.com/Sparshmogveer" target="_blank" rel="noopener" class="social-btn" title="GitHub">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+        </a>
+        <a href="https://www.linkedin.com/in/sparsha-b-t" target="_blank" rel="noopener" class="social-btn" title="LinkedIn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Sparsha B T. All rights reserved.</p>
+    <p>Crafted with ♥ and strategic thinking</p>
+  </div>
+</footer>
+
+<!-- ── AI CHAT ── -->
+<button id="ai-chat-btn" onclick="toggleChat()" title="Ask AI about Sparsha">♟️</button>
+<div id="ai-chat-panel">
+  <div class="chat-header">
+    <div class="chat-header-info">
+      <span class="chat-piece">♟️</span>
+      <div>
+        <h4>Ask About Sparsha</h4>
+        <p>AI-powered portfolio assistant</p>
+      </div>
+    </div>
+    <button class="chat-close" onclick="toggleChat()">✕</button>
+  </div>
+  <div class="chat-messages" id="chat-messages">
+    <div class="chat-msg ai">
+      👋 Hi! I'm Sparsha's AI assistant. Ask me anything — her projects, skills, internships, or why she'd be a great hire!
+    </div>
+  </div>
+  <div class="chat-input-row">
+    <input type="text" id="chat-input" placeholder="Ask about projects, skills..." onkeydown="if(event.key==='Enter') sendChat()">
+    <button class="chat-send" id="chat-send-btn" onclick="sendChat()">➤</button>
+  </div>
+</div>
+<!-- ── SCRIPTS AT BOTTOM — runs after full DOM is loaded ── -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+  const EMAILJS_SERVICE_ID  = 'service_ud7t695';
+  const EMAILJS_TEMPLATE_ID = 'template_ectrxkt';
+  const EMAILJS_PUBLIC_KEY  = 'H9vOSwHMEp-eLQH0k';
+  emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+</script>
+<script src="Sparsh-portfolio.js"></script>
+</body>
+</html>
