@@ -233,7 +233,6 @@ let originalTexts = new Map();
 let translationCache = {};
 
 function collectOriginalTexts() {
-  // Collect all translatable text nodes — paragraphs, headings, spans, list items, buttons
   const selectors = [
     '.hero-name', '.hero-tagline', '.hero-quote', '.hero-sub',
     '.hero-ticker span:last-child', '.hero-pills span',
@@ -249,59 +248,55 @@ function collectOriginalTexts() {
     '.project-title', '.project-sub', '.project-desc',
     '.approach-title', '.approach-list li',
     '.result-box strong', '.result-box p',
-    '.github-btn', '.cert-item span:not(.cert-view)', '.cert-view',
+    '.cert-item span:not(.cert-view)', '.cert-view',
     '.exp-company', '.exp-role', '.exp-achievements li',
     '.insight span:last-child', '.insights-box h3',
     '.contact-info-item p', '.contact-info-item span',
-    'label', '.form-success', '#form-success',
+    'label', '#form-success',
     '.footer-tagline', '.footer-bottom p',
     'nav a[data-page]', '.mobile-menu a',
-    'h1:not(.hero-name)', 'h2:not(.hero-tagline)', 'h3', 'h4',
+    'h3', 'h4',
   ];
 
-  document.querySelectorAll(selectors.join(',')).forEach((el, i) => {
-    if (!el.dataset.transId) {
-      el.dataset.transId = 't' + i;
-      originalTexts.set('t' + i, el.innerHTML);
+  let counter = 0;
+  document.querySelectorAll(selectors.join(',')).forEach((el) => {
+    if (!el.getAttribute('data-tid')) {
+      const id = 'tid' + counter++;
+      el.setAttribute('data-tid', id);
+      originalTexts.set(id, el.innerHTML);
     }
   });
+  console.log('Collected', originalTexts.size, 'translatable elements');
 }
 
 async function setLanguage(lang) {
   if (lang === currentLang) return;
 
-  // Update active button
   document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('lang-' + lang)?.classList.add('active');
   document.getElementById('mob-lang-' + lang)?.classList.add('active');
 
   if (lang === 'en') {
-    // Restore originals
     originalTexts.forEach((html, id) => {
-      const el = document.querySelector(`[data-trans-id="${id}"]`);
+      const el = document.querySelector(`[data-tid="${id}"]`);
       if (el) el.innerHTML = html;
     });
     currentLang = 'en';
     return;
   }
 
-  // Show loading indicator
   const indicator = document.getElementById('lang-loading');
   if (indicator) indicator.style.display = 'flex';
-
   currentLang = lang;
 
-  // Collect texts if not done yet
   if (originalTexts.size === 0) collectOriginalTexts();
 
-  // Batch all texts together for one API call
   const cacheKey = lang;
   if (!translationCache[cacheKey]) translationCache[cacheKey] = {};
 
   const toTranslate = [];
   originalTexts.forEach((html, id) => {
     if (!translationCache[cacheKey][id]) {
-      // Strip HTML, translate text only
       const tmp = document.createElement('div');
       tmp.innerHTML = html;
       const text = tmp.textContent.trim();
@@ -309,7 +304,8 @@ async function setLanguage(lang) {
     }
   });
 
-  // Translate in batches of 20
+  console.log('Translating', toTranslate.length, 'elements to', lang);
+
   const batchSize = 20;
   for (let i = 0; i < toTranslate.length; i += batchSize) {
     const batch = toTranslate.slice(i, i + batchSize);
@@ -322,30 +318,28 @@ async function setLanguage(lang) {
         body: JSON.stringify({ text: combined, language: lang }),
       });
       const data = await res.json();
-      const lines = data.translated.split('\n');
-
-      lines.forEach(line => {
-        const match = line.match(/^\[(\w+)\]:\s*(.+)$/);
-        if (match) {
-          translationCache[cacheKey][match[1]] = match[2].trim();
-        }
-      });
+      console.log('Batch response:', data);
+      if (data.translated) {
+        data.translated.split('\n').forEach(line => {
+          const match = line.match(/^\[(\w+)\]:\s*(.+)$/);
+          if (match) translationCache[cacheKey][match[1]] = match[2].trim();
+        });
+      }
     } catch (e) {
       console.warn('Translation batch failed:', e);
     }
   }
 
-  // Apply translations to DOM
+  // Apply to DOM
   originalTexts.forEach((html, id) => {
-    const el = document.querySelector(`[data-trans-id="${id}"]`);
+    const el = document.querySelector(`[data-tid="${id}"]`);
     if (el && translationCache[cacheKey][id]) {
-      // Preserve HTML structure, only replace text
       const tmp = document.createElement('div');
       tmp.innerHTML = html;
       if (tmp.children.length === 0) {
         el.textContent = translationCache[cacheKey][id];
       } else {
-        el.innerHTML = html.replace(tmp.textContent, translationCache[cacheKey][id]);
+        el.innerHTML = html.replace(tmp.textContent.trim(), translationCache[cacheKey][id]);
       }
     }
   });
