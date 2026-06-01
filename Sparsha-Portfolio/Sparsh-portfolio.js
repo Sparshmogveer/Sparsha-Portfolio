@@ -227,8 +227,140 @@ async function sendAutoReply(name, userEmail, subject, message) {
 }
 
 
+// ── LANGUAGE TRANSLATION ──
+let currentLang = 'en';
+let originalTexts = new Map();
+let translationCache = {};
+
+function collectOriginalTexts() {
+  // Collect all translatable text nodes — paragraphs, headings, spans, list items, buttons
+  const selectors = [
+    '.hero-name', '.hero-tagline', '.hero-quote', '.hero-sub',
+    '.hero-ticker span:last-child', '.hero-pills span',
+    '.btn-primary', '.btn-outline', '.btn-resume',
+    '.hero-card h3', '.hero-card p',
+    '.section-title', '.section-subtitle',
+    '.about-text p', '.endgame-box p', '.endgame-box strong',
+    '.about-photo-badge', '.about-moment-label', '.about-moment-sub',
+    '.edu-degree', '.edu-school', '.edu-grade', '.edu-year',
+    '.vision-card h3', '.vision-card p',
+    '.skill-row h3', '.skill-row p',
+    '.approach-step span:last-child', '.approach-box h3',
+    '.project-title', '.project-sub', '.project-desc',
+    '.approach-title', '.approach-list li',
+    '.result-box strong', '.result-box p',
+    '.github-btn', '.cert-item span:not(.cert-view)', '.cert-view',
+    '.exp-company', '.exp-role', '.exp-achievements li',
+    '.insight span:last-child', '.insights-box h3',
+    '.contact-info-item p', '.contact-info-item span',
+    'label', '.form-success', '#form-success',
+    '.footer-tagline', '.footer-bottom p',
+    'nav a[data-page]', '.mobile-menu a',
+    'h1:not(.hero-name)', 'h2:not(.hero-tagline)', 'h3', 'h4',
+  ];
+
+  document.querySelectorAll(selectors.join(',')).forEach((el, i) => {
+    if (!el.dataset.transId) {
+      el.dataset.transId = 't' + i;
+      originalTexts.set('t' + i, el.innerHTML);
+    }
+  });
+}
+
+async function setLanguage(lang) {
+  if (lang === currentLang) return;
+
+  // Update active button
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('lang-' + lang)?.classList.add('active');
+  document.getElementById('mob-lang-' + lang)?.classList.add('active');
+
+  if (lang === 'en') {
+    // Restore originals
+    originalTexts.forEach((html, id) => {
+      const el = document.querySelector(`[data-trans-id="${id}"]`);
+      if (el) el.innerHTML = html;
+    });
+    currentLang = 'en';
+    return;
+  }
+
+  // Show loading indicator
+  const indicator = document.getElementById('lang-loading');
+  if (indicator) indicator.style.display = 'flex';
+
+  currentLang = lang;
+
+  // Collect texts if not done yet
+  if (originalTexts.size === 0) collectOriginalTexts();
+
+  // Batch all texts together for one API call
+  const cacheKey = lang;
+  if (!translationCache[cacheKey]) translationCache[cacheKey] = {};
+
+  const toTranslate = [];
+  originalTexts.forEach((html, id) => {
+    if (!translationCache[cacheKey][id]) {
+      // Strip HTML, translate text only
+      const tmp = document.createElement('div');
+      tmp.innerHTML = html;
+      const text = tmp.textContent.trim();
+      if (text) toTranslate.push({ id, text });
+    }
+  });
+
+  // Translate in batches of 20
+  const batchSize = 20;
+  for (let i = 0; i < toTranslate.length; i += batchSize) {
+    const batch = toTranslate.slice(i, i + batchSize);
+    const combined = batch.map(item => `[${item.id}]: ${item.text}`).join('\n');
+
+    try {
+      const res = await fetch('/api/translate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text: combined, language: lang }),
+      });
+      const data = await res.json();
+      const lines = data.translated.split('\n');
+
+      lines.forEach(line => {
+        const match = line.match(/^\[(\w+)\]:\s*(.+)$/);
+        if (match) {
+          translationCache[cacheKey][match[1]] = match[2].trim();
+        }
+      });
+    } catch (e) {
+      console.warn('Translation batch failed:', e);
+    }
+  }
+
+  // Apply translations to DOM
+  originalTexts.forEach((html, id) => {
+    const el = document.querySelector(`[data-trans-id="${id}"]`);
+    if (el && translationCache[cacheKey][id]) {
+      // Preserve HTML structure, only replace text
+      const tmp = document.createElement('div');
+      tmp.innerHTML = html;
+      if (tmp.children.length === 0) {
+        el.textContent = translationCache[cacheKey][id];
+      } else {
+        el.innerHTML = html.replace(tmp.textContent, translationCache[cacheKey][id]);
+      }
+    }
+  });
+
+  if (indicator) indicator.style.display = 'none';
+}
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', () => {
+  setTimeout(collectOriginalTexts, 500);
+});
+
 // ── INIT ──
 document.addEventListener('DOMContentLoaded', () => {
   triggerAnimations();
   document.getElementById('footer').style.display = 'none';
+  setTimeout(collectOriginalTexts, 600);
 });

@@ -9,6 +9,10 @@
 <link rel="stylesheet" href="Sparsh-portfolio.css">
 </head>
 <body>
+<!-- Language loading indicator -->
+<div id="lang-loading" style="display:none;position:fixed;top:0;left:0;right:0;z-index:9999;background:rgba(212,175,55,0.15);border-bottom:2px solid var(--gold);padding:8px;text-align:center;font-family:'IBM Plex Mono',monospace;font-size:0.78rem;color:var(--gold);align-items:center;justify-content:center;gap:10px;">
+  <span style="animation:spin 1s linear infinite;display:inline-block">⟳</span> Translating page...
+</div>
 <!-- ── HEADER ── -->
 <header id="header"> 
   <div class="nav-inner">
@@ -23,6 +27,12 @@
       <a href="javascript:void(0)" onclick="showPage('projects')" data-page="projects">Projects</a>
       <a href="javascript:void(0)" onclick="showPage('experience')" data-page="experience">Experience</a>
       <a href="javascript:void(0)" class="nav-cta" onclick="showPage('contact')">Let's Connect</a>
+      <!-- Language Switcher -->
+      <div class="lang-switcher" id="lang-switcher">
+        <button class="lang-btn active" onclick="setLanguage('en')" id="lang-en">🇬🇧 EN</button>
+        <button class="lang-btn" onclick="setLanguage('kn')" id="lang-kn">🇮🇳 ಕನ್ನಡ</button>
+        <button class="lang-btn" onclick="setLanguage('hi')" id="lang-hi">🇮🇳 हिंदी</button>
+      </div>
     </nav>
     <button class="hamburger" onclick="toggleMobile()" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -35,6 +45,11 @@
     <a href="javascript:void(0)" onclick="showPage('projects');closeMobile()">Projects</a>
     <a href="javascript:void(0)" onclick="showPage('experience');closeMobile()">Experience</a>
     <a href="javascript:void(0)" onclick="showPage('contact');closeMobile()">Contact</a>
+    <div class="lang-switcher-mobile">
+      <button class="lang-btn" onclick="setLanguage('en');closeMobile()" id="mob-lang-en">🇬🇧 EN</button>
+      <button class="lang-btn" onclick="setLanguage('kn');closeMobile()" id="mob-lang-kn">🇮🇳 ಕನ್ನಡ</button>
+      <button class="lang-btn" onclick="setLanguage('hi');closeMobile()" id="mob-lang-hi">🇮🇳 हिंदी</button>
+    </div>
   </div>
 </header>
 
