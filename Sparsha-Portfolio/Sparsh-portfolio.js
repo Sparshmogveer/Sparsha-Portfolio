@@ -16,16 +16,10 @@ function showPage(name) {
   if (currentLang && currentLang !== 'en') {
     const cacheKey = currentLang;
     if (translationCache[cacheKey]) {
-      originalTexts.forEach((html, id) => {
+      originalTexts.forEach((text, id) => {
         const el = document.querySelector(`[data-tid="${id}"]`);
         if (el && translationCache[cacheKey][id]) {
-          const tmp = document.createElement('div');
-          tmp.innerHTML = html;
-          if (tmp.children.length === 0) {
-            el.textContent = translationCache[cacheKey][id];
-          } else {
-            el.innerHTML = html.replace(tmp.textContent.trim(), translationCache[cacheKey][id]);
-          }
+          el.textContent = translationCache[cacheKey][id];
         }
       });
     }
@@ -251,40 +245,33 @@ let originalTexts = new Map();
 let translationCache = {};
 
 function collectOriginalTexts() {
-  // Temporarily make all pages visible so we can collect all text
-  const pages = document.querySelectorAll('.page');
-  const hiddenPages = [];
-  pages.forEach(p => {
-    if (!p.classList.contains('active')) {
-      p.style.display = 'block';
-      p.style.visibility = 'hidden';
-      p.style.position = 'absolute';
-      hiddenPages.push(p);
-    }
-  });
+  // Inject a temporary style to make ALL pages visible for collection
+  const tempStyle = document.createElement('style');
+  tempStyle.id = 'temp-collect-style';
+  tempStyle.textContent = '.page { display: block !important; visibility: hidden !important; position: absolute !important; pointer-events: none !important; }';
+  document.head.appendChild(tempStyle);
 
   const selectors = [
-    '.hero-name', '.hero-tagline', '.hero-quote', '.hero-sub',
-    '.hero-ticker span:last-child', '.hero-pills span',
+    '.hero-name', '.hero-tagline', '.hero-quote',
+    '.hero-ticker span:last-child',
     '.btn-primary', '.btn-outline', '.btn-resume',
     '.hero-card h3', '.hero-card p',
     '.section-title', '.section-subtitle',
     '.about-text p', '.endgame-box p', '.endgame-box strong',
     '.about-photo-badge', '.about-moment-label', '.about-moment-sub',
-    '.edu-degree', '.edu-school', '.edu-grade', '.edu-year',
+    '.edu-degree', '.edu-school', '.edu-grade',
     '.vision-card h3', '.vision-card p',
     '.skill-row h3', '.skill-row p',
-    '.approach-step span:last-child', '.approach-box h3',
+    '.approach-step span:last-child',
     '.project-title', '.project-sub', '.project-desc',
-    '.approach-title', '.approach-list li',
+    '.approach-list li',
     '.result-box strong', '.result-box p',
-    '.cert-item span:not(.cert-view)', '.cert-view',
+    '.cert-item > span:not(.cert-view)',
     '.exp-company', '.exp-role', '.exp-achievements li',
-    '.insight span:last-child', '.insights-box h3',
-    '.contact-info-item p', '.contact-info-item span',
-    'label', '#form-success',
-    '.footer-tagline', '.footer-bottom p',
-    'nav a[data-page]', '.mobile-menu a',
+    '.insight span:last-child',
+    '.contact-info-item p',
+    'label',
+    '.footer-bottom p',
     'h3', 'h4',
   ];
 
@@ -293,18 +280,14 @@ function collectOriginalTexts() {
     if (!el.getAttribute('data-tid')) {
       const id = 'tid' + counter++;
       el.setAttribute('data-tid', id);
-      originalTexts.set(id, el.innerHTML);
+      originalTexts.set(id, el.textContent.trim());
     }
   });
 
-  // Restore hidden pages
-  hiddenPages.forEach(p => {
-    p.style.display = '';
-    p.style.visibility = '';
-    p.style.position = '';
-  });
+  // Remove temp style — pages go back to normal
+  document.getElementById('temp-collect-style').remove();
 
-  console.log('Collected', originalTexts.size, 'translatable elements from all pages');
+  console.log('Collected', originalTexts.size, 'elements from all pages');
 }
 
 async function setLanguage(lang) {
@@ -315,9 +298,9 @@ async function setLanguage(lang) {
   document.getElementById('mob-lang-' + lang)?.classList.add('active');
 
   if (lang === 'en') {
-    originalTexts.forEach((html, id) => {
+    originalTexts.forEach((text, id) => {
       const el = document.querySelector(`[data-tid="${id}"]`);
-      if (el) el.innerHTML = html;
+      if (el) el.textContent = text;
     });
     currentLang = 'en';
     return;
@@ -369,16 +352,10 @@ async function setLanguage(lang) {
   }
 
   // Apply to DOM
-  originalTexts.forEach((html, id) => {
+  originalTexts.forEach((text, id) => {
     const el = document.querySelector(`[data-tid="${id}"]`);
     if (el && translationCache[cacheKey][id]) {
-      const tmp = document.createElement('div');
-      tmp.innerHTML = html;
-      if (tmp.children.length === 0) {
-        el.textContent = translationCache[cacheKey][id];
-      } else {
-        el.innerHTML = html.replace(tmp.textContent.trim(), translationCache[cacheKey][id]);
-      }
+      el.textContent = translationCache[cacheKey][id];
     }
   });
 
