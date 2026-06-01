@@ -3,16 +3,34 @@ function showPage(name) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.getElementById('page-' + name).classList.add('active');
 
-  // Show/hide footer (not on landing)
   document.getElementById('footer').style.display = name === 'landing' ? 'none' : 'block';
 
-  // Update nav active state
   document.querySelectorAll('[data-page]').forEach(a => {
     a.classList.toggle('active', a.dataset.page === name);
   });
 
   window.scrollTo(0, 0);
   triggerAnimations();
+
+  // Re-apply translation if not English
+  if (currentLang && currentLang !== 'en') {
+    const cacheKey = currentLang;
+    if (translationCache[cacheKey]) {
+      originalTexts.forEach((html, id) => {
+        const el = document.querySelector(`[data-tid="${id}"]`);
+        if (el && translationCache[cacheKey][id]) {
+          const tmp = document.createElement('div');
+          tmp.innerHTML = html;
+          if (tmp.children.length === 0) {
+            el.textContent = translationCache[cacheKey][id];
+          } else {
+            el.innerHTML = html.replace(tmp.textContent.trim(), translationCache[cacheKey][id]);
+          }
+        }
+      });
+    }
+  }
+
   return false;
 }
 
@@ -233,6 +251,18 @@ let originalTexts = new Map();
 let translationCache = {};
 
 function collectOriginalTexts() {
+  // Temporarily make all pages visible so we can collect all text
+  const pages = document.querySelectorAll('.page');
+  const hiddenPages = [];
+  pages.forEach(p => {
+    if (!p.classList.contains('active')) {
+      p.style.display = 'block';
+      p.style.visibility = 'hidden';
+      p.style.position = 'absolute';
+      hiddenPages.push(p);
+    }
+  });
+
   const selectors = [
     '.hero-name', '.hero-tagline', '.hero-quote', '.hero-sub',
     '.hero-ticker span:last-child', '.hero-pills span',
@@ -266,7 +296,15 @@ function collectOriginalTexts() {
       originalTexts.set(id, el.innerHTML);
     }
   });
-  console.log('Collected', originalTexts.size, 'translatable elements');
+
+  // Restore hidden pages
+  hiddenPages.forEach(p => {
+    p.style.display = '';
+    p.style.visibility = '';
+    p.style.position = '';
+  });
+
+  console.log('Collected', originalTexts.size, 'translatable elements from all pages');
 }
 
 async function setLanguage(lang) {
